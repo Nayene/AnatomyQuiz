@@ -4,10 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,6 +29,8 @@ public class MainActivity extends Activity {
     MediaPlayer mediaPlayer;
 
     int indexPergunta;
+
+
 
     String[] perguntas = {
             "Onde se passa a série Breaking Bad?",
@@ -80,6 +86,18 @@ public class MainActivity extends Activity {
     };
 
 
+    void mudarCorBotao( View botao, int cor ){
+        botao.setBackgroundColor(cor);
+    }
+
+    void reiniciarCoresBotoes(){
+
+        btnResposta1.setBackgroundColor( ContextCompat.getColor(this, R.color.amarelo));
+        btnResposta2.setBackgroundColor( ContextCompat.getColor(this, R.color.roxo));
+
+    }
+
+
     View.OnClickListener clickBtnResposta = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -88,10 +106,18 @@ public class MainActivity extends Activity {
 
             if(respostaUsuario == gabarito[indexPergunta]){
                qtdAcertos++;
-                alert("Parabéns", "Resposta correta!");
+               // alert("Parabéns", "Resposta correta!");
+                mudarCorBotao(v, ContextCompat.getColor(v.getContext(), R.color.verde));
+
+                new ProximaPerguntaDelay(1000).execute();
+
             }else{
                 qtdErros++;
-                alert("Sorry", "Resposta errada!");
+                //alert("Sorry", "Resposta errada!");
+                mudarCorBotao(v, ContextCompat.getColor(v.getContext(), R.color.vermelho));
+
+                new ProximaPerguntaDelay(1000).execute();
+
             }
             // parar o relogio quando for respondido
             timer.cancel();
@@ -181,7 +207,32 @@ public class MainActivity extends Activity {
 
         iniciarJogo();
 
+    }
 
+
+     class ProximaPerguntaDelay extends  AsyncTask<Void, Void, Void>{
+
+        private int milisegundos;
+
+        public ProximaPerguntaDelay(int milisegundos) {
+            this.milisegundos = milisegundos;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            SystemClock.sleep(milisegundos);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            proximaPergunta();
+            reiniciarCoresBotoes();
+        }
 
     }
+
 }

@@ -2,13 +2,16 @@
 <resources>
     <color name="colorPrimary">#28547a</color>
     <color name="colorPrimaryDark">#346fa2</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="amarelo">#ffbe3d</color>
+    <color name="colorAccent">#f21566</color>
+    <color name="rosa">#f21566</color>
+    <color name="amarelo">#fcbb16</color>
     <color name="telaInicio">#7dc4ca</color>
     //17b0c1
     <color name="gray">#dddddd</color>
     <color name="roxo">#862799</color>
     <color name="cabecario">#7c7b7b</color>
     <color name="vermelho">#e60e0e</color>
-    <color name="fundoquiz">#dde4ec</color>
+    <color name="fundoquiz">#8ed3e1</color>
+    <color name="azul">#2e44e5</color>
+    <color name="verde">#00ff87</color>
 </resources>
