@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FinalActivity"
+        android:background="@color/preto"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_quiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ga" />
+            <TextView
+                android:id="@+id/qtdAcertos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif"
+                android:text="Quantidade Acertos: 5"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/qtdErros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif"
+                android:text="Quantidade Erros: 2"
+                android:textColor="#fff" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                >
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/verde"
+                    android:fontFamily="monospace"
+                    android:onClick="iniciarJogo"
+                    android:text="Jogar Novamente"
+                    android:textColor="#FFF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:id="@+id/btnSair"
+                    android:layout_marginLeft="50dp"
+
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/vermelho"
+                    android:fontFamily="monospace"
+                    android:onClick="finalizarJogo"
+                    android:text="Sair"
+                    android:textColor="#FFF"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:id="@+id/btnJogarNovamente"
+                    android:layout_marginLeft="50dp"
+
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>

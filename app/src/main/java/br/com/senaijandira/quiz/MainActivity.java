@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
     LinearLayout layout;
     TextView txtPergunta, txtRelogio;
     Button btnResposta1, btnResposta2;
+    Button btnjogarNovamente, btnSair;
 
     Integer qtdAcertos=0, qtdErros=0;
 
@@ -149,27 +151,33 @@ public class MainActivity extends Activity {
     }
 
     public void gameOver(){
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Game Over");
-        alert.setMessage("QtdAcertos: " + qtdAcertos.toString()+" \nQtdErros: " + qtdErros.toString());
 
-        alert.setNegativeButton("sair", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        Intent intent = new Intent(this, FinalActivity.class);
+        startActivity(intent);
+        finish();
 
-                finish();
-            }
-        });
 
-        alert.setPositiveButton("reiniciar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                iniciarJogo();
-            }
-        });
 
-        alert.create().show();
-    }
+//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//        alert.setTitle("Game Over");
+//        alert.setMessage("QtdAcertos: " + qtdAcertos.toString()+" \nQtdErros: " + qtdErros.toString());
+
+//        alert.setNegativeButton("sair", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                finish();
+//            }
+//        });
+//
+//        alert.setPositiveButton("reiniciar", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                iniciarJogo();
+//            }
+//        });
+//
+//        alert.create().show();
+  }
 
     public void proximaPergunta(){
 
@@ -204,6 +212,8 @@ public class MainActivity extends Activity {
 
         btnResposta1 =  findViewById(R.id.btn1);
         btnResposta2 =  findViewById(R.id.btn2);
+        btnjogarNovamente = findViewById(R.id.btnJogarNovamente);
+        btnSair = findViewById(R.id.btnSair);
 
         iniciarJogo();
 
