@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundoquiz"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    >
+
+    <!--define tamanho dos layouts : tamanho de acordo com o conteudo
+           ele fica tamanho automatico    layout_height/width="wrap_content"
+          ele pega a tela inteira  :layout_width/heigth="match_parent"
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:gravity="center"
+        android:padding="25dp"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qual a Melhor serie do mundo ?"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/txtPergunta"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_gravity="center"
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#fcbb16"
+            android:text="Greys Anatomy"
+            android:textColor="#FFF"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/btn1"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#862799"
+            android:text="Opçaõ 1"
+            android:textColor="#FFF"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/btn2"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#22cdd6"
+            android:text="opção 2"
+            android:textColor="#FFF"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/btn3"
+
+            />
+
+
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="#f21566"
+            android:text="opção 3"
+            android:textColor="#FFF"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/btn4"
+
+            />
+
+
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30"
+            android:layout_marginTop="50dp"
+            android:textSize="38sp"
+            android:layout_gravity="center"
+            android:textColor="#e5e5e5"
+            android:textStyle="bold"
+            android:id="@+id/txtRelogio"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fundo2"
+            />
+
+
+</LinearLayout>
