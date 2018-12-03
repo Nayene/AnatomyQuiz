@@ -1,11 +1,10 @@
-package br.com.senaijandira.quiz;
+package br.com.senaijandira.quiz.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,12 +16,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+
+import br.com.senaijandira.quiz.R;
+import br.com.senaijandira.quiz.model.Pergunta;
+import br.com.senaijandira.quiz.service.QuizService;
+import br.com.senaijandira.quiz.service.ServiceFactory;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends Activity {
 
     LinearLayout layout;
     TextView txtPergunta, txtRelogio;
-    Button btnResposta1, btnResposta2;
+    Button btnResposta1, btnResposta2, btnResposta3, btnResposta4;
     Button btnjogarNovamente, btnSair;
 
     Integer qtdAcertos=0, qtdErros=0;
@@ -33,7 +43,7 @@ public class MainActivity extends Activity {
     int indexPergunta;
 
 
-
+/*
     String[] perguntas = {
             "Onde se passa a série Breaking Bad?",
             "Qual e o personagem principal da série?",
@@ -49,22 +59,35 @@ public class MainActivity extends Activity {
     };
 
     int[]  gabarito = { 0, 1, 0, 0 };
+*/
+
+    List<Pergunta> resultadoApi;
 
     private void iniciarJogo(){
         qtdErros=0;
         qtdAcertos=0;
         indexPergunta = 0;
 
-        txtPergunta.setText(perguntas[indexPergunta]);
+//        txtPergunta.setText(perguntas[indexPergunta]);
+        txtPergunta.setText(resultadoApi.get(indexPergunta).getPergunta());
 
-        btnResposta1.setText(respostas[indexPergunta][0]);
+//        btnResposta1.setText(respostas[indexPergunta][0]);
+        btnResposta1.setText(resultadoApi.get(indexPergunta).getRespostas().get(0));
         btnResposta1.setTag(0);
 
-        btnResposta2.setText(respostas[indexPergunta][1]);
+        btnResposta2.setText(resultadoApi.get(indexPergunta).getRespostas().get(1));
         btnResposta2.setTag(1);
+
+        btnResposta3.setText(resultadoApi.get(indexPergunta).getRespostas().get(2));
+        btnResposta3.setTag(2);
+
+        btnResposta4.setText(resultadoApi.get(indexPergunta).getRespostas().get(3));
+        btnResposta4.setTag(3);
 
         btnResposta1.setOnClickListener(clickBtnResposta);
         btnResposta2.setOnClickListener(clickBtnResposta);
+        btnResposta3.setOnClickListener(clickBtnResposta);
+        btnResposta4.setOnClickListener(clickBtnResposta);
 
         //inicar a contagem
         timer.start();
@@ -96,6 +119,8 @@ public class MainActivity extends Activity {
 
         btnResposta1.setBackgroundColor( ContextCompat.getColor(this, R.color.amarelo));
         btnResposta2.setBackgroundColor( ContextCompat.getColor(this, R.color.roxo));
+        btnResposta3.setBackgroundColor( ContextCompat.getColor(this, R.color.azul));
+        btnResposta4.setBackgroundColor( ContextCompat.getColor(this, R.color.rosa));
 
     }
 
@@ -106,7 +131,7 @@ public class MainActivity extends Activity {
 
             int respostaUsuario = (int)v.getTag();
 
-            if(respostaUsuario == gabarito[indexPergunta]){
+            if(respostaUsuario == resultadoApi.get(indexPergunta).getGabarito()){
                qtdAcertos++;
                // alert("Parabéns", "Resposta correta!");
                 mudarCorBotao(v, ContextCompat.getColor(v.getContext(), R.color.verde));
@@ -150,48 +175,38 @@ public class MainActivity extends Activity {
         alert.create().show();
     }
 
+    //Finalizando o aplicativo
     public void gameOver(){
 
         Intent intent = new Intent(this, FinalActivity.class);
         startActivity(intent);
         finish();
-
-
-
-//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-//        alert.setTitle("Game Over");
-//        alert.setMessage("QtdAcertos: " + qtdAcertos.toString()+" \nQtdErros: " + qtdErros.toString());
-
-//        alert.setNegativeButton("sair", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                finish();
-//            }
-//        });
-//
-//        alert.setPositiveButton("reiniciar", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                iniciarJogo();
-//            }
-//        });
-//
-//        alert.create().show();
   }
 
+    //indo para a próxima pergunta
     public void proximaPergunta(){
 
-        if(indexPergunta == perguntas.length-1) {
+        if(indexPergunta == resultadoApi.size()-1) {
             //jogo acabou
             gameOver();
             return;
         }
 
         indexPergunta++;
-        txtPergunta.setText(perguntas[indexPergunta]);
+        txtPergunta.setText(resultadoApi.get(indexPergunta).getPergunta());
 
-        btnResposta1.setText(respostas[indexPergunta][0]);
-        btnResposta2.setText(respostas[indexPergunta][1]);
+//        btnResposta1.setText(respostas[indexPergunta][0]);
+        btnResposta1.setText(resultadoApi.get(indexPergunta).getRespostas().get(0));
+        btnResposta1.setTag(0);
+
+        btnResposta2.setText(resultadoApi.get(indexPergunta).getRespostas().get(1));
+        btnResposta2.setTag(1);
+
+        btnResposta3.setText(resultadoApi.get(indexPergunta).getRespostas().get(2));
+        btnResposta3.setTag(2);
+
+        btnResposta4.setText(resultadoApi.get(indexPergunta).getRespostas().get(3));
+        btnResposta4.setTag(3);
 
         //reiniciando o timer
         timer.start();
@@ -212,10 +227,32 @@ public class MainActivity extends Activity {
 
         btnResposta1 =  findViewById(R.id.btn1);
         btnResposta2 =  findViewById(R.id.btn2);
+        btnResposta3 = findViewById(R.id.btn3);
+        btnResposta4 = findViewById(R.id.btn4);
         btnjogarNovamente = findViewById(R.id.btnJogarNovamente);
         btnSair = findViewById(R.id.btnSair);
 
-        iniciarJogo();
+
+        //carregar as informações da API
+        QuizService api = ServiceFactory.create();
+
+        api.obterPergunta().enqueue(new Callback<List<Pergunta>>() {
+            @Override
+            public void onResponse(Call<List<Pergunta>> call, Response<List<Pergunta>> response) {
+
+                resultadoApi = response.body();
+                iniciarJogo();
+            }
+
+            @Override
+            public void onFailure(Call<List<Pergunta>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Erro ao carregar o quiz!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ///
+
+
 
     }
 

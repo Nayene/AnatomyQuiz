@@ -1,10 +1,11 @@
-package br.com.senaijandira.quiz;
+package br.com.senaijandira.quiz.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import br.com.senaijandira.quiz.R;
 
 public class FinalActivity extends Activity {
 
