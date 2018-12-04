@@ -14,41 +14,84 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/img_quiz"
-                android:layout_width="match_parent"
+                android:layout_width="600dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ga" />
-            <TextView
-                android:id="@+id/qtdAcertos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:text="Quantidade Acertos: 5"
-                android:textColor="#fff" />
+                android:src="@drawable/ga"
+                android:layout_marginTop="-80dp"/>
 
-            <TextView
-                android:id="@+id/qtdErros"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="sans-serif"
-                android:text="Quantidade Erros: 2"
-                android:textColor="#fff" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtAcertos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:textSize="18sp"
+                    android:text="Acertos: "
+                    android:textColor="@color/verde" />
+
+
+                <TextView
+                    android:id="@+id/acertos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif"
+                    android:text="0"
+                    android:textSize="18sp"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtErros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:text="Erros: "
+                    android:textSize="18sp"
+                    android:textColor="@color/vermelho"
+                    />
+
+
+                <TextView
+                    android:id="@+id/erros"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:text="0"
+                    android:textColor="#fff" />
+
+            </LinearLayout>
+
 
 
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="100dp"
                 >
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
                     android:background="@color/verde"
                     android:fontFamily="monospace"
                     android:onClick="iniciarJogo"
@@ -57,12 +100,13 @@
                     android:textSize="15dp"
                     android:textStyle="bold"
                     android:id="@+id/btnSair"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="-8dp"
 
                     />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="55dp"
                     android:background="@color/vermelho"
                     android:fontFamily="monospace"
                     android:onClick="finalizarJogo"

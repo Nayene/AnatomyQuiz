@@ -31,39 +31,22 @@ import retrofit2.Response;
 public class MainActivity extends Activity {
 
     LinearLayout layout;
-    TextView txtPergunta, txtRelogio;
+    TextView txtPergunta, txtRelogio, erros, acertos;
     Button btnResposta1, btnResposta2, btnResposta3, btnResposta4;
     Button btnjogarNovamente, btnSair;
 
     Integer qtdAcertos=0, qtdErros=0;
+
+
 
     // media player para tocar musica do tempo
     MediaPlayer mediaPlayer;
 
     int indexPergunta;
 
-
-/*
-    String[] perguntas = {
-            "Onde se passa a série Breaking Bad?",
-            "Qual e o personagem principal da série?",
-            "Quantas temporadas tem a série?",
-            "Qual era o nome da lanchonete de Gustavo Fring?"
-    };
-
-    String[][] respostas = {
-            { "Albuquerque", "Los Angeles" },
-            { "Saul Goodman", "Walter White" },
-            { "5", "3" },
-            { "Los Pollos hermanos", "Mc Donalds" },
-    };
-
-    int[]  gabarito = { 0, 1, 0, 0 };
-*/
-
     List<Pergunta> resultadoApi;
 
-    private void iniciarJogo(){
+    public void iniciarJogo(){
         qtdErros=0;
         qtdAcertos=0;
         indexPergunta = 0;
@@ -95,6 +78,8 @@ public class MainActivity extends Activity {
         // iniciar a musica de tempo
         mediaPlayer = MediaPlayer.create(this, R.raw.countdown);
         mediaPlayer.start();
+
+
     }
 
     // codigo do relogio , contar 30seg.
@@ -135,6 +120,7 @@ public class MainActivity extends Activity {
                qtdAcertos++;
                // alert("Parabéns", "Resposta correta!");
                 mudarCorBotao(v, ContextCompat.getColor(v.getContext(), R.color.verde));
+
 
                 new ProximaPerguntaDelay(1000).execute();
 
@@ -178,6 +164,7 @@ public class MainActivity extends Activity {
     //Finalizando o aplicativo
     public void gameOver(){
 
+
         Intent intent = new Intent(this, FinalActivity.class);
         startActivity(intent);
         finish();
@@ -188,6 +175,7 @@ public class MainActivity extends Activity {
 
         if(indexPergunta == resultadoApi.size()-1) {
             //jogo acabou
+            erros.setText(qtdErros.toString());
             gameOver();
             return;
         }
@@ -233,7 +221,11 @@ public class MainActivity extends Activity {
         btnSair = findViewById(R.id.btnSair);
 
 
-        //carregar as informações da API
+
+        //qtdErros = findViewById(R.id.qtdAcertos);
+
+
+        // carregar as informações da API
         QuizService api = ServiceFactory.create();
 
         api.obterPergunta().enqueue(new Callback<List<Pergunta>>() {
@@ -250,7 +242,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        ///
 
 
 
