@@ -49,7 +49,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/verde"
+                    android:background="@drawable/botao"
                     android:fontFamily="monospace"
                     android:onClick="iniciarJogo"
                     android:text="Jogar Novamente"
@@ -63,7 +63,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/vermelho"
+                    android:background="@drawable/botao"
                     android:fontFamily="monospace"
                     android:onClick="finalizarJogo"
                     android:text="Sair"
