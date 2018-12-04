@@ -90,9 +90,9 @@
                 >
 
                 <Button
-                    android:layout_width="120dp"
-                    android:layout_height="60dp"
-                    android:background="@color/verde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/botao"
                     android:fontFamily="monospace"
                     android:onClick="iniciarJogo"
                     android:text="Jogar Novamente"
@@ -105,9 +105,9 @@
 
                     />
                 <Button
-                    android:layout_width="100dp"
-                    android:layout_height="55dp"
-                    android:background="@color/vermelho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/botao"
                     android:fontFamily="monospace"
                     android:onClick="finalizarJogo"
                     android:text="Sair"

@@ -20,7 +20,7 @@ android:background="@color/telaInicio"
         android:onClick="iniciarJogo"
         android:textStyle="bold"
         android:textSize="16dp"
-        android:background="@color/vermelho"
+        android:background="@drawable/botao"
         android:text="JOGAR"
         android:textColor="#FFF"
 

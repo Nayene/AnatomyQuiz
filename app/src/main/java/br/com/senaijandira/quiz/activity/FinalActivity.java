@@ -24,7 +24,6 @@ public class FinalActivity extends Activity {
     }
 
     public void finalizarJogo(View view) {
-
         finish();
     }
 
