@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
         timer.start();
 
         // iniciar a musica de tempo
-        mediaPlayer = MediaPlayer.create(this, R.raw.countdown);
+        mediaPlayer = MediaPlayer.create(this, R.raw.grey_anatomy);
         mediaPlayer.start();
 
 
@@ -164,8 +164,11 @@ public class MainActivity extends Activity {
     //Finalizando o aplicativo
     public void gameOver(){
 
-
         Intent intent = new Intent(this, FinalActivity.class);
+
+        intent.putExtra("Erro", qtdErros);
+        intent.putExtra("Acerto", qtdAcertos);
+
         startActivity(intent);
         finish();
   }
@@ -175,7 +178,7 @@ public class MainActivity extends Activity {
 
         if(indexPergunta == resultadoApi.size()-1) {
             //jogo acabou
-            erros.setText(qtdErros.toString());
+            //erros.setText(qtdErros.toString());
             gameOver();
             return;
         }
@@ -270,6 +273,16 @@ public class MainActivity extends Activity {
             proximaPergunta();
             reiniciarCoresBotoes();
         }
+
+    }
+
+    public void passarInformacao(){
+        Intent intent = new Intent(this, FinalActivity.class);
+        intent.putExtra("Erro", qtdErros);
+        intent.putExtra("Acerto", qtdAcertos);
+
+
+        startActivity(intent);
 
     }
 

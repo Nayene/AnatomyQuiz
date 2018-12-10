@@ -11,7 +11,7 @@ import br.com.senaijandira.quiz.R;
 public class FinalActivity extends Activity {
 
     TextView erros, acertos;
-
+    int erro, acerto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,11 @@ public class FinalActivity extends Activity {
         erros = findViewById(R.id.erros);
         acertos = findViewById(R.id.acertos);
 
+        erro = getIntent().getIntExtra("Erro", 0);
+        acerto = getIntent().getIntExtra("Acerto",0);
+
+        erros.setText(String.valueOf(erro));
+        acertos.setText(String.valueOf(acerto));
 
     }
 
