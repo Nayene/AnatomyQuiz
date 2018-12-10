@@ -23,7 +23,7 @@ public class InicioActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.game_music);
+        mediaPlayer = MediaPlayer.create(this, R.raw.grey_anatomy);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 

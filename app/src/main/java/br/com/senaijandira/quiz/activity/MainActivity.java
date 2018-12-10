@@ -203,7 +203,7 @@ public class MainActivity extends Activity {
         timer.start();
 
         // inicar a musica novamente
-        mediaPlayer = MediaPlayer.create(this, R.raw.countdown); // recaregar a musica quando for proximo
+        mediaPlayer = MediaPlayer.create(this, R.raw.grey_anatomy); // recaregar a musica quando for proximo
         mediaPlayer.start();
     }
 
